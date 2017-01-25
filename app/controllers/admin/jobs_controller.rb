@@ -52,9 +52,9 @@ def destroy
 end
 
 def publish
-    @job = Job.find(params[:id])
-    @job.publish!
-    redirect_to :back
+  @job = Job.find(params[:id])
+  @job.publish!
+  redirect_to :back
 end
 
 def hide
