@@ -1,7 +1,45 @@
-<body class="text-center">
-
+<body>
+<div class="adminshow1">
 <h1> <%= @job.title %> </h1>
+
 <p>
   <%= simple_format(@job.description) %>
 </p>
+
+
+<button class="btn btn-default btn-lg"><a href="/admin/jobs/#/resumes">查看履历</a></button>
+
+</div>
 </body>
+
+<style>
+.adminshow1 h1{
+  background-color: #e1f1f2;
+
+  padding-top: 40px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  box-shadow: 3px 3px 2px #ccc;
+}
+.adminshow1 {
+  background-color: #f9fdff;
+
+
+}
+.adminshow1{
+padding-top: 100px;
+height: 700px;
+padding-left: -200px;
+}
+.adminshow1 p{
+  padding-left: 70px;
+  padding-top: 7px;
+  font-family: sans-serif;
+}
+.adminshow1 button{
+padding: 7px 50px;
+  margin-left: 900px;
+  margin-top: -200px;
+}
+
+</style>

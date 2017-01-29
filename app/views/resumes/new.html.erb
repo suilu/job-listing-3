@@ -1,9 +1,20 @@
-<h3> 投递简历到 <%= @job.title %> </h3>
+<div class="container-fluid6">
+  <h3> 投递简历到 <%= @job.title %> </h3>
 <hr>
 
 <%= simple_form_for [@job, @resume] do |f| %>
   <%= f.input :content %>
   <%= f.input :attachment %>
-  
+
   <%= f.submit "送出" %>
 <% end %>
+</div>
+<style>
+  .container-fluid6{
+    padding-top: 60px;
+    height: 700px;
+    width: 600px;
+    text-align: center;
+  }
+
+</style>

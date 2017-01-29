@@ -1,5 +1,23 @@
+<style>
+.nav-tabs li a {
+    color: #777;
+}
+</style>
 
 
+
+<div class="container-fluid4">
+  <%= form_tag jobs_path, :method => "get" do %>
+
+       <div class="searchform">
+          <%= text_field_tag :search, params[:search], placeholder: "搜索职位", class: "searchbox"%>
+          <span>
+              <%= submit_tag "搜索", :title => nil, :description => nil, class: "mike" %>
+              <!-- <input type="submit" value="点 击" class="mike"> -->
+           </span>
+       </div>
+    <% end %>
+</div>
 <div class="dropdown clearfix pull-right">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     排序
@@ -13,27 +31,82 @@
   <li><%= link_to("按照发表时间排序", jobs_path )%></li>
 </ul>
 </div>
-<table class="table table-boldered" >
-  <thead>
-    <tr>
-      <td>职缺</td>
-      <td>薪资上限</td>
-      <td>薪资下限</td>
-      <td>刊登时间</td>
-    </tr>
-  </thead>
 
-  <tbody>
-  <% @jobs.each do |job| %>
-  <tr>
-    <td>
-      <%= link_to(job.title, job_path(job)) %></td>
-      <td>
-      <%= job.wage_upper_bound %>
-    </td>
-    <td> <%= job.wage_lower_bound %> </td>
-    <td><%= job.created_at %></td>
-  </tr>
-  <% end %>
-</tbody>
-</table>
+
+  <h3 class="text-center">发布的工作</h3>
+  <ul class="nav nav-tabs margin-left: 30px;">
+    <li class="active"><a data-toggle="tab" href="#home">热门工作</a></li>
+    <li><a data-toggle="tab" href="#menu1">互联网</a></li>
+    <li><a data-toggle="tab" href="#menu2">设计</a></li>
+  </ul>
+
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <table class="table table-boldered job2 " >
+      <thead>
+        <tr>
+          <td>职缺</td>
+          <td>薪资上限</td>
+          <td>薪资下限</td>
+          <td>刊登时间</td>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% @jobs.each do |job| %>
+      <tr>
+        <td>
+          <%= link_to(job.title, job_path(job)) %></td>
+          <td>
+          <%= job.wage_upper_bound %>
+        </td>
+        <td> <%= job.wage_lower_bound %> </td>
+        <td><%= job.created_at %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <h2>Chandler Bing, Guitarist</h2>
+    <p>Always a pleasure people! Hope you enjoyed it as much as I did. Could I BE.. any more pleased?</p>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h2>Peter Griffin, Bass player</h2>
+    <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
+  </div>
+
+</div>
+<div class="text-center">
+    <%= will_paginate @jobs, renderer: BootstrapPagination::Rails %>
+</div>
+
+
+
+<style>
+  .container-fluid4{
+    padding-top: 50px;
+  }
+  .job1{
+    height: 600px;
+  }
+  .tab-content{
+    padding-top: 10px;
+    padding-left: 70px;
+    padding-bottom: 50px;
+
+  }
+  .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+
+</style>
